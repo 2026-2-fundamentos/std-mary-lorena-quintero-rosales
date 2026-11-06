@@ -1,3 +1,7 @@
+import gzip
+from collections import defaultdict
+
+
 def pregunta_07():
     """
     Para cada valor distinto de la segunda columna (`value`), construya la
@@ -5,10 +9,18 @@ def pregunta_07():
     valor. Conserve las letras repetidas y el orden en que aparecen en el
     archivo. Retorne una lista de tuplas `(valor, letras)` ordenada por el
     valor.
-
-    Ejemplo del formato de la respuesta:
-
-        [(0, ["C"]), (1, ["E", "B", "E"]), (2, ["A", "E"]), ...]
     """
+    diccionario = defaultdict(list)
 
-    raise NotImplementedError
+    with gzip.open("data/data.csv.gz", "rt") as file:
+        for linea in file:
+            datos = linea.split()
+            if not datos:
+                continue
+
+            letra = datos[0]
+            valor = int(datos[1])
+
+            diccionario[valor].append(letra)
+
+    return sorted(diccionario.items())
