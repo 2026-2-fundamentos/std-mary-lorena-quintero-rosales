@@ -1,3 +1,5 @@
+import pandas as pd
+
 def pregunta_08():
     """
     Retorne la tabla `data/tbl0.tsv` completa con una columna adicional
@@ -12,4 +14,8 @@ def pregunta_08():
         ...
     """
 
-    raise NotImplementedError
+    df_suma_C0_C2 = pd.read_csv("data/tbl0.tsv", sep="\t")  #? Leer el archivo `tbl0.tsv` y cargarlo en un DataFrame llamado 'df_suma_C0_C2'. El parámetro 'delimiter="\t"' indica que los valores están separados por tabulaciones (TSV)
+    df_suma_C0_C2["suma"] = df_suma_C0_C2["c0"] + df_suma_C0_C2["c2"]    #? Crear una nueva columna llamada 'suma' que contenga la suma de los valores de las columnas 'c0' y 'c2' en cada fila
+    return df_suma_C0_C2
+
+    

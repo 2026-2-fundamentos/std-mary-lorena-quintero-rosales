@@ -1,3 +1,5 @@
+import pandas as pd
+
 def pregunta_04():
     """
     Usando `data/tbl0.tsv`, calcule el promedio de la columna `c2` para cada
@@ -13,4 +15,15 @@ def pregunta_04():
         ...
     """
 
-    raise NotImplementedError
+    # Leer el archivo TSV
+    df = pd.read_csv("data/tbl0.tsv", sep="\t")
+
+    # Calcular el promedio de la columna c2 para cada categoría de c1
+    promedio = df.groupby("c1")["c2"].mean()
+
+    # Ordenar el índice alfabéticamente
+    promedio = promedio.sort_index()
+
+    return promedio
+
+ 

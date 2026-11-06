@@ -1,3 +1,5 @@
+import pandas as pd
+
 def pregunta_10():
     """
     Usando `data/tbl0.tsv`, construya para cada categoría de la columna `c1`
@@ -15,4 +17,8 @@ def pregunta_10():
         ...
     """
 
-    raise NotImplementedError
+    df_tablaC1_listaC2 = pd.read_csv("data/tbl0.tsv", sep="\t")     #? Leer el archivo `tbl0.tsv` y cargarlo en un DataFrame llamado 'df_count_c2'. El parámetro 'delimiter="\t"' indica que los valores están separados por tabulaciones (TSV)
+    return df_tablaC1_listaC2.groupby("c1")[["c2"]].agg(func = lambda s: ":".join(sorted(s.map(str))))  #? Agrupar los datos por la columna 'c1' y para cada grupo de 'c1', aplicar una función que:
+        
+
+    
